@@ -2,12 +2,25 @@
 <html>
 <head>
   <title>JavaScript Example</title>
+  <style type="text/css">
+    .red {
+      color: red;
+    }
+
+    .pleft {
+      padding-left: 100px;
+    }
+
+  </style>
 </head>
 <body>
   <h1 onmouseover="mOver()" ondblclick="doSomething()" onmousemove="displayCoords(event)">Alexander Hamilton</h1>
   <p onclick="pTag()">Alexander Hamilton (January 11, 1755 or 1757 – July 12, 1804) was an American statesman and one of the Founding Fathers of the United States. He was an influential interpreter and promoter of the U.S. Constitution, as well as the founder of the nation's financial system, the Federalist Party, the United States Coast Guard, and The New York Post newspaper.</p>
 
   <p id="box"></p>
+
+  <button id='btn'>Red Header</button>
+
   <script>
     function doSomething() {
       console.log("You double clicked on the header!");
@@ -29,6 +42,32 @@
       box.innerHTML = coor;
       console.log(coor);
     }
+
+    let btn = document.querySelector('#btn');
+    let hdr = document.querySelector('h1');
+
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    fontsize = 30;
+
+    btn.onclick = function() {
+      hdr.classList.toggle('red');
+      hdr.classList.toggle('pleft');
+      hdr.style.color = getRandomColor();
+      fontsize++;
+      fontSizes = "'" + fontsize + "px'";
+      console.log(fontSizes);
+      hdr.style.fontsize = fontSizes;
+    }
+
+// document.getElementById("p2").style.color = "blue";
   </script>
 </body>
 </html>
